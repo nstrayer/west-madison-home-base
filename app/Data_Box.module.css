@@ -1,0 +1,48 @@
+.box {
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-md);
+  padding: var(--size-sm);
+  border: 1px solid rgba(var(--card-border-rgb), 0.5);
+  transition: background 200ms, border 200ms, transform 200ms;
+  background: rgba(var(--card-rgb), 0);
+}
+
+.description {
+  max-width: 120px;
+}
+
+.value {
+  font-size: 1.3rem;
+  transition: transform 200ms;
+}
+
+.unit {
+  /* font-size: 0.85rem; */
+  opacity: 0.5;
+  font-weight: lighter;
+  margin-left: var(--size-xs);
+}
+
+.holder {
+  display: grid;
+  gap: var(--size-md);
+  padding: var(--size-md);
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 215px));
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .box:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.85);
+    transform: scale(1.05);
+  }
+
+  .box:hover .value {
+    transform: translateX(4px);
+  }
+}

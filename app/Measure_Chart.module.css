@@ -1,0 +1,4 @@
+.tooltip {
+  padding: var(--size-sm);
+  background: rgba(var(--card-rgb), 0.8);
+}

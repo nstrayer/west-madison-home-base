@@ -1,0 +1,22 @@
+.measure_summary {
+  padding-block: var(--size-md);
+  display: flex;
+  gap: var(--size-md) var(--size-xl);
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--size-sm);
+}
+
+.chart {
+  height: 250px;
+}
+
+.unit {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-left: var(--size-xxs);
+}

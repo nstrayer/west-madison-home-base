@@ -1,91 +1,58 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import { format_time } from "@/utils/parse_time_stamp";
+import Image from "next/image";
+import { get_latest_readings } from "../utils/get_latest_readings";
+import { Data_Box, Data_Box_Container } from "./Data_Box";
+import { Measure_Summary } from "./Measure_Summary";
+import styles from "./page.module.css";
 
-const inter = Inter({ subsets: ['latin'] })
+export default async function Home() {
+  const latest_data = await get_latest_readings(4);
 
-export default function Home() {
+  const { num_obs, times } = latest_data;
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
+      <h1 className={styles.header}>West Madison Home Base</h1>
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src="/madison-house.png"
+          alt="House Logo"
+          width={767 / 2}
+          height={892 / 2}
           priority
         />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className={styles.data_display}>
+        <h2>Observation Statistics</h2>
+        <Data_Box_Container>
+          <Data_Box description="Total Number" value={num_obs} unit={"obs"} />
+          <Data_Box
+            description="Elapsed Hours"
+            value={times.hrs_elapsed}
+            unit={"hrs"}
+          />
+          <Data_Box
+            description="Earliest"
+            value={format_time(times.earliest)}
+          />
+          <Data_Box description="Latest" value={format_time(times.latest)} />
+        </Data_Box_Container>
+        <Measure_Summary
+          name="Temperature"
+          readings={latest_data.readings}
+          measure={"temp"}
+        />
+        <Measure_Summary
+          name="Co2"
+          readings={latest_data.readings}
+          measure={"co2"}
+        />
+        <Measure_Summary
+          name="Humidity"
+          readings={latest_data.readings}
+          measure="humidity"
+        />
       </div>
     </main>
-  )
+  );
 }
