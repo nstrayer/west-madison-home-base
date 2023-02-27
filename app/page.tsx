@@ -9,6 +9,7 @@ export default async function Home() {
   const latest_data = await get_latest_readings(4);
 
   const { num_obs, times } = latest_data;
+
   return (
     <main className={styles.main}>
       <h1 className={styles.header}>West Madison Home Base</h1>
@@ -17,19 +18,19 @@ export default async function Home() {
           className={styles.logo}
           src="/madison-house.png"
           alt="House Logo"
-          width={767 / 2}
-          height={892 / 2}
+          width={767 / 3}
+          height={892 / 3}
           priority
         />
       </div>
       <div className={styles.data_display}>
         <h2>Observation Statistics</h2>
         <Data_Box_Container>
-          <Data_Box description="Total Number" value={num_obs} unit={"obs"} />
+          <Data_Box description="Total Number" value={num_obs} unit="obs" />
           <Data_Box
             description="Elapsed Hours"
             value={times.hrs_elapsed}
-            unit={"hrs"}
+            unit="hrs"
           />
           <Data_Box description="Earliest" value={times.earliest} />
           <Data_Box description="Latest" value={times.latest} />
@@ -37,12 +38,12 @@ export default async function Home() {
         <Measure_Summary
           name="Temperature"
           readings={latest_data.readings}
-          measure={"temp"}
+          measure="temp"
         />
         <Measure_Summary
           name="Co2"
           readings={latest_data.readings}
-          measure={"co2"}
+          measure="co2"
         />
         <Measure_Summary
           name="Humidity"
