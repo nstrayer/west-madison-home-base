@@ -2,7 +2,8 @@
 
 import { format_num } from "@/utils/format_num";
 import { ParsedReading } from "@/utils/get_latest_readings";
-import { format_time, parse_time_stamp } from "@/utils/parse_time_stamp";
+import { parse_time_stamp } from "@/utils/parse_time_stamp";
+import { format_time } from "@/utils/format_time";
 import {
   CartesianGrid,
   Line,

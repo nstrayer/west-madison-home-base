@@ -1,4 +1,4 @@
-import { format_time } from "@/utils/parse_time_stamp";
+import { format_time } from "@/utils/format_time";
 import Image from "next/image";
 import { get_latest_readings } from "../utils/get_latest_readings";
 import { Data_Box, Data_Box_Container } from "./Data_Box";
@@ -31,11 +31,8 @@ export default async function Home() {
             value={times.hrs_elapsed}
             unit={"hrs"}
           />
-          <Data_Box
-            description="Earliest"
-            value={format_time(times.earliest)}
-          />
-          <Data_Box description="Latest" value={format_time(times.latest)} />
+          <Data_Box description="Earliest" value={times.earliest} />
+          <Data_Box description="Latest" value={times.latest} />
         </Data_Box_Container>
         <Measure_Summary
           name="Temperature"

@@ -1,6 +1,10 @@
 .box {
   display: flex;
   height: 80px;
+  width: 220px;
+  flex-basis: 220px;
+  flex-grow: 0;
+  flex-shrink: 1;
   align-items: center;
   justify-content: space-between;
   gap: var(--size-md);
@@ -20,18 +24,17 @@
 }
 
 .unit {
-  /* font-size: 0.85rem; */
   opacity: 0.5;
   font-weight: lighter;
   margin-left: var(--size-xs);
 }
 
 .holder {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--size-md);
   padding: var(--size-md);
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 215px));
 }
 
 /* Enable hover only on non-touch devices */

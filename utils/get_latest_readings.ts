@@ -48,11 +48,17 @@ export async function get_latest_readings(num_hours: number) {
 
   const sorted_readings = sort(parsed_readings, (d) => d.timestamp);
 
+  // new Date(timestamp * 1000);
   const earliest = parse_time_stamp(sorted_readings[0].timestamp);
   const latest = parse_time_stamp(last_item(sorted_readings).timestamp);
+  const time_formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Detroit",
+    timeStyle: "short",
+    dateStyle: "short",
+  });
   const times = {
-    earliest,
-    latest,
+    earliest: time_formatter.format(earliest),
+    latest: time_formatter.format(latest),
     hrs_elapsed: (latest.valueOf() - earliest.valueOf()) / 1000 / 60 / 60,
   };
 
