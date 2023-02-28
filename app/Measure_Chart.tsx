@@ -1,11 +1,9 @@
 "use client";
 
 import { format_num } from "@/utils/format_num";
-import { ParsedReading } from "@/utils/get_latest_readings";
-import { parse_time_stamp } from "@/utils/parse_time_stamp";
-import { format_time } from "@/utils/format_time";
+import { format_timestamp } from "@/utils/format_time";
+import { ParsedObservation } from "@/utils/parse_observations";
 import {
-  CartesianGrid,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -20,7 +18,7 @@ export function Measure_Chart({
   readings,
   measure,
 }: {
-  readings: ParsedReading[];
+  readings: ParsedObservation[];
   measure: string;
 }) {
   return (
@@ -30,9 +28,7 @@ export function Measure_Chart({
         <XAxis
           dataKey="timestamp"
           domain={["auto", "auto"]}
-          tickFormatter={(timestamp) =>
-            format_time(parse_time_stamp(timestamp))
-          }
+          tickFormatter={format_timestamp}
           name="Time"
           type="number"
         />
@@ -48,7 +44,7 @@ const CustomTooltip: ContentType<number, string> = (props) => {
   const { active, payload } = props;
 
   if (active && payload && payload.length) {
-    const timestamp = format_time(parse_time_stamp(props.label as number));
+    const timestamp = format_timestamp(props.label as number);
     const value = format_num(Number(payload[0].value), 2);
     return (
       <div className={styles.tooltip}>

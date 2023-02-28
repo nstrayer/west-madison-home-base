@@ -19,6 +19,8 @@
 }
 
 .value {
+  flex: 1;
+  text-align: end;
   font-size: 1.3rem;
   transition: transform 200ms;
 }
