@@ -1,0 +1,4 @@
+.container {
+  padding-block: 3rem;
+  color: rgb(var(--error-rgb));
+}

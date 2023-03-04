@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Data_Display from "./data_display";
+import Data_Display_Client from "./Data_Display_Client";
 import styles from "./page.module.css";
 
 export default async function Home() {
@@ -16,10 +16,7 @@ export default async function Home() {
           priority
         />
       </div>
-      <div className={styles.data_display}>
-        {/* @ts-expect-error Server Component */}
-        <Data_Display />
-      </div>
+      <Data_Display_Client />
     </main>
   );
 }
