@@ -24,11 +24,10 @@ export default function Data_Display_Client() {
   }
 
   if (error) {
-    if (!(error instanceof Error)) {
-      return <Bad_Data_Msg>Had unknown error</Bad_Data_Msg>;
+    if (error instanceof Error) {
+      throw error;
     }
-    console.log("Fetch error", error);
-    return <Bad_Data_Msg>Request for data timed-out</Bad_Data_Msg>;
+    throw new Error("Unknown error occured in data display component");
   }
 
   if (data === undefined) {

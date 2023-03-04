@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Data_Display_Client from "./Data_Display_Client";
+import ErrorBoundary from "./ErrorBoundary";
 import styles from "./page.module.css";
 
 export default async function Home() {
@@ -16,7 +17,9 @@ export default async function Home() {
           priority
         />
       </div>
-      <Data_Display_Client />
+      <ErrorBoundary>
+        <Data_Display_Client />
+      </ErrorBoundary>
     </main>
   );
 }

@@ -1,13 +1,17 @@
 import { parse_timestamp } from "./parse_timestamp";
 
-export function format_time(d: Date, with_day: boolean = false) {
-  return new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Detroit",
-    timeStyle: "short",
-    dateStyle: with_day ? "short" : undefined,
-  }).format(d);
-}
+const timezone_options: Intl.DateTimeFormatOptions = {
+  timeZone: "America/Detroit",
+  timeStyle: "short",
+};
+
+const time_formatter = new Intl.DateTimeFormat("en-US", timezone_options);
+
+export const date_and_time_formatter = new Intl.DateTimeFormat("en-US", {
+  ...timezone_options,
+  dateStyle: "short",
+});
 
 export function format_timestamp(timestamp: number): string {
-  return format_time(parse_timestamp(timestamp));
+  return time_formatter.format(parse_timestamp(timestamp));
 }
