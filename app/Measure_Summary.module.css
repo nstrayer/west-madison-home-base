@@ -1,6 +1,6 @@
 .measure_summary {
   width: 100%;
-  padding-block: var(--size-md);
+  padding-block: var(--size-lg);
   display: flex;
   gap: var(--size-md) var(--size-xl);
   flex-direction: column;

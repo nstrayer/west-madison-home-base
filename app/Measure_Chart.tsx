@@ -23,7 +23,17 @@ export function Measure_Chart({
 }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart width={400} height={250} data={readings}>
+      <LineChart
+        width={400}
+        height={250}
+        data={readings}
+        margin={{
+          top: 5,
+          right: 45,
+          left: 0,
+          bottom: 0,
+        }}
+      >
         {/* <CartesianGrid strokeDasharray="3 3" /> */}
         <XAxis
           dataKey="timestamp"

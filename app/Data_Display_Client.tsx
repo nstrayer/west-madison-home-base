@@ -42,17 +42,6 @@ export default function Data_Display_Client() {
       <h2>Observation Statistics</h2>
       <Data_Box_Container>
         <Data_Box
-          description="Total Number"
-          value={observations.length}
-          unit="obs"
-        />
-        <Data_Box
-          description="Elapsed Hours"
-          value={times.hrs_elapsed}
-          unit="hrs"
-        />
-
-        <Data_Box
           description="Earliest"
           value={times.earliest.time}
           unit={times.earliest.date}
@@ -62,13 +51,23 @@ export default function Data_Display_Client() {
           value={times.latest.time}
           unit={times.latest.date}
         />
+        <Data_Box
+          description="Number of Datapoints"
+          value={observations.length}
+          unit="obs"
+        />
+        <Data_Box
+          description="Time Span"
+          value={times.hrs_elapsed}
+          unit="hrs"
+        />
       </Data_Box_Container>
+      <Measure_Summary name="Co2" readings={observations} measure="co2" />
       <Measure_Summary
         name="Temperature"
         readings={observations}
         measure="temp"
       />
-      <Measure_Summary name="Co2" readings={observations} measure="co2" />
       <Measure_Summary
         name="Humidity"
         readings={observations}
