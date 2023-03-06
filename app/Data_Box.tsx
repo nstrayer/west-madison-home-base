@@ -15,7 +15,9 @@ export function Data_Box({
     <div className={styles.box}>
       <span className={styles.description}>{description}</span>
       <span className={styles.value}>
-        {typeof value === "number" ? format_num(value) : value}
+        <span className={styles.main_value}>
+          {typeof value === "number" ? format_num(value) : value}
+        </span>
         {unit ? <span className={styles.unit}>{unit}</span> : null}
       </span>
     </div>

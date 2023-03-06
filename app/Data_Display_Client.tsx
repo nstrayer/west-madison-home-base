@@ -51,8 +51,17 @@ export default function Data_Display_Client() {
           value={times.hrs_elapsed}
           unit="hrs"
         />
-        <Data_Box description="Earliest" value={times.earliest} />
-        <Data_Box description="Latest" value={times.latest} />
+
+        <Data_Box
+          description="Earliest"
+          value={times.earliest.time}
+          unit={times.earliest.date}
+        />
+        <Data_Box
+          description="Latest"
+          value={times.latest.time}
+          unit={times.latest.date}
+        />
       </Data_Box_Container>
       <Measure_Summary
         name="Temperature"

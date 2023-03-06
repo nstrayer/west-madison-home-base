@@ -40,7 +40,7 @@ export function Measure_Summary({
   measure: ObservationMeasure;
   name?: string;
 }) {
-  const { unit, description } = measure_info[measure];
+  const { description } = measure_info[measure];
   const { min, max } = get_ranges(readings, measure);
 
   return (
@@ -53,12 +53,12 @@ export function Measure_Summary({
         <Data_Box
           description="Low"
           value={min.val}
-          unit={`${unit} @ ${format_timestamp(min.timestamp)}`}
+          unit={format_timestamp(min.timestamp)}
         />
         <Data_Box
           description="High"
           value={max.val}
-          unit={`${unit} @ ${format_timestamp(max.timestamp)}`}
+          unit={format_timestamp(max.timestamp)}
         />
       </Data_Box_Container>
       <div className={styles.chart}>

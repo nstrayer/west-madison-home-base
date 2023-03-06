@@ -1,10 +1,15 @@
+.holder {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+  gap: var(--size-md);
+  padding: var(--size-md);
+  justify-content: center;
+}
+
 .box {
   display: flex;
   height: 80px;
-  width: 220px;
-  flex-basis: 220px;
-  flex-grow: 0;
-  flex-shrink: 1;
   align-items: center;
   justify-content: space-between;
   gap: var(--size-md);
@@ -23,20 +28,14 @@
   text-align: end;
   font-size: 1.3rem;
   transition: transform 200ms;
+  display: flex;
+  flex-direction: column;
 }
 
 .unit {
   opacity: 0.5;
   font-weight: lighter;
   margin-left: var(--size-xs);
-}
-
-.holder {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--size-md);
-  padding: var(--size-md);
-  justify-content: center;
 }
 
 /* Enable hover only on non-touch devices */

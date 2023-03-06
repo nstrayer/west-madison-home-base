@@ -1,4 +1,5 @@
 .measure_summary {
+  width: 100%;
   padding-block: var(--size-md);
   display: flex;
   gap: var(--size-md) var(--size-xl);

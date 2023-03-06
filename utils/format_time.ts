@@ -2,12 +2,14 @@ import { parse_timestamp } from "./parse_timestamp";
 
 const timezone_options: Intl.DateTimeFormatOptions = {
   timeZone: "America/Detroit",
-  timeStyle: "short",
 };
 
-const time_formatter = new Intl.DateTimeFormat("en-US", timezone_options);
+export const time_formatter = new Intl.DateTimeFormat("en-US", {
+  ...timezone_options,
+  timeStyle: "short",
+});
 
-export const date_and_time_formatter = new Intl.DateTimeFormat("en-US", {
+export const date_formatter = new Intl.DateTimeFormat("en-US", {
   ...timezone_options,
   dateStyle: "short",
 });
